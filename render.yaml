@@ -5,7 +5,7 @@ services:
     name: invenpyme
     runtime: node
     plan: free
-    region: oregon
+    region: ohio
     buildCommand: npm install --omit=dev
     startCommand: npm start
     healthCheckPath: /salud
