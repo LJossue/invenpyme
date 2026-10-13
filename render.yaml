@@ -1,0 +1,18 @@
+# Configuracion de despliegue para Render.
+# Permite publicar el servicio sin configurar nada a mano desde el panel.
+services:
+  - type: web
+    name: invenpyme
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /salud
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true          # Render genera una clave aleatoria segura
+      - key: DATABASE_URL
+        sync: false                  # se pega a mano la cadena de Neon
